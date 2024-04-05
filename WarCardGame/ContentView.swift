@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+  
+  /*
+   the "var" keyword is used to declare mutable variables,
+   meaning the value stored in the variable can be changed
+   after it is initialized.
+   */
+  var playerCard = "card7"
+  var cpuCard = "card13"
+
     var body: some View {
+      
         ZStack {
           Image("background-cloth")
             .resizable()
@@ -21,7 +31,7 @@ struct ContentView: View {
             
             HStack {
               Spacer()
-              Image("card2")
+              Image(playerCard)
               Spacer()
               Image("card3")
               Spacer()
@@ -29,14 +39,17 @@ struct ContentView: View {
            
             Spacer()
             
-            Button("Deal") {
-              print("Deal Cards")
+          
+            Button {
+              //Calling the function "deal"
+              deal()
+            } label: {
+              Image("button")
             }
+
             
             Spacer()
-            
-            
-            
+                      
             HStack {
               Spacer()
               VStack {
@@ -60,6 +73,12 @@ struct ContentView: View {
           }
         }
     }
+  
+  func deal() {
+    print("Deal Card")
+  }
+  
+  
 }
 
 #Preview {
