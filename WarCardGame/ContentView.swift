@@ -14,9 +14,14 @@ struct ContentView: View {
    meaning the value stored in the variable can be changed
    after it is initialized.
    */
-  var playerCard = "card7"
-  var cpuCard = "card13"
+  
+  // @State is a property wrapper
+  @State var playerCard = "card7"
+  @State var cpuCard = "card13"
 
+  var playerScore = 0
+  var cpuScore = 0
+  
     var body: some View {
       
         ZStack {
@@ -33,13 +38,12 @@ struct ContentView: View {
               Spacer()
               Image(playerCard)
               Spacer()
-              Image("card3")
+              Image(cpuCard)
               Spacer()
             }
            
             Spacer()
-            
-          
+                    
             Button {
               //Calling the function "deal"
               deal()
@@ -47,7 +51,6 @@ struct ContentView: View {
               Image("button")
             }
 
-            
             Spacer()
                       
             HStack {
@@ -55,14 +58,15 @@ struct ContentView: View {
               VStack {
                 Text("Player")
                   .font(.headline)
-                Text("0")
+                //Casting converting int to string
+                Text(String(playerScore))
                   .font(.largeTitle)
               }
               Spacer()
               VStack {
                 Text("Player")
                   .font(.headline)
-                Text("0")
+                Text(String(cpuScore))
                   .font(.largeTitle)
               }
               Spacer()
@@ -75,10 +79,16 @@ struct ContentView: View {
     }
   
   func deal() {
-    print("Deal Card")
+    //Randomize the layer card
+    // three dots means range
+    playerCard = "card" + String(Int.random(in: 2...14))
+    
+    //Randomize the cpu card
+    cpuCard = "card" + String(Int.random(in: 2...14))
+    
+    //Update the scores
+    
   }
-  
-  
 }
 
 #Preview {
