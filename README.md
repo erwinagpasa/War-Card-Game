@@ -1,3 +1,3 @@
 # War-Card-Game
 
-![ScreenShot](scr.png)
+![ScreenShot](screen.png)
