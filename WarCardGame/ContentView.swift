@@ -19,8 +19,8 @@ struct ContentView: View {
   @State var playerCard = "card7"
   @State var cpuCard = "card13"
 
-  var playerScore = 0
-  var cpuScore = 0
+  @State var playerScore = 0
+  @State var cpuScore = 0
   
     var body: some View {
       
@@ -64,7 +64,7 @@ struct ContentView: View {
               }
               Spacer()
               VStack {
-                Text("Player")
+                Text("CPU")
                   .font(.headline)
                 Text(String(cpuScore))
                   .font(.largeTitle)
@@ -81,12 +81,26 @@ struct ContentView: View {
   func deal() {
     //Randomize the layer card
     // three dots means range
-    playerCard = "card" + String(Int.random(in: 2...14))
+    let playerCardValue = Int.random(in: 2...14)
+    playerCard = "card" + String(playerCardValue)
     
     //Randomize the cpu card
-    cpuCard = "card" + String(Int.random(in: 2...14))
+    let cpuCardValue = Int.random(in: 2...14)
+    cpuCard = "card" + String(cpuCardValue)
     
     //Update the scores
+    if playerCardValue > cpuCardValue {
+      //Add 1 to player score
+      playerScore += 1
+    } 
+    else if cpuCardValue > playerCardValue {
+      // Add 1 to cpu score
+      cpuScore += 1
+    }
+    else{
+      //Tie
+      //Do nothing
+    }
     
   }
 }
